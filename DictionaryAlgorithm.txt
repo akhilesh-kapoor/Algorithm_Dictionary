@@ -1,0 +1,26 @@
+ASSUMPTIONS
+	getDate(int index) : Function which returns date at index from dictionary
+	getKey(int index) : Function which returns key value at index from dictionary
+	addToDictionary(date, key) : Function which adds date with corresponding values into the dictionary 
+
+
+function solution(D)
+{
+	for(int i = 0 ; i < (D.size() - 1) ; i ++)			//Traversing the dictionary
+	{
+		date = D.getDate(i) ;				//Stores the ith date
+		n = D.getDate(i + 1) - D.getDate(i) ;		//Calculates no. of terms required between ith and (i + 1)th dates
+		key = D.getKey(i) ;				//Stores key value of date at ith index
+		key2 = D.getKey(i + 1) ;			//Stores key value of date at (i + 1)th index
+
+		d = (key2 - key)/n ;				//Calculates common difference of AP between dates
+
+		for(int j = 0 ; j < (n - 1) ; j ++)			//Adding the required dates into the dictionary
+		{
+			key += d ;				//Increasing the value of key with (key + common difference)
+			addToDictionary(date + 1, key) ;		//Function which adds date with corresponding key value 
+		}
+	}
+
+	return D ;
+}
